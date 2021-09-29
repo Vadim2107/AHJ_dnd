@@ -1,62 +1,44 @@
-const cards = document.querySelectorAll('.card');
-const arrCards = Array.from(cards);
-const newCards = document.querySelectorAll('.new_card');
-const arrNewCards = Array.from(newCards);
+import NewForm from './addForm';
+import Card from './Card';
+import dragAndDrop from './DnD';
 
-for (let i = 0; i < arrNewCards.length; i += 1) {
-  arrNewCards[i].onclick = () => {
-    arrNewCards[i].insertAdjacentHTML('beforeBegin', '<form class="form"><textarea class="card_input" type="text" placeholder="Enter a title for this card..."></textarea><button data-id="card" class="btn">Add Card</button></form>');
-    const btn = document.querySelector('.btn');
-    const form = document.querySelector('.form');
-    const input = document.querySelector('.card_input');
-    arrNewCards[i].style.display = 'none';
-    btn.onclick = (e) => {
-      e.preventDefault();
-      form.insertAdjacentHTML('beforeBegin', `<div class="card"><div class="card_title">${input.value}</div></div>`);
-      form.remove();
-      arrNewCards[i].style.display = 'block';
-      // const cards = document.querySelectorAll('.card');
-      // const arrCards = Array.from(cards);
-      for (let q = 0; q < arrCards.length; q += 1) {
-        arrCards[q].addEventListener('mouseenter', () => {
-          arrCards[q].insertAdjacentHTML('afterBegin', '<div class="card_del">&#10008</div>');
-          const cardDel = document.querySelector('.card_del');
-          cardDel.onclick = () => arrCards[q].remove();
-        });
-      }
+const addNewForm = new NewForm();
+const addCard = document.querySelectorAll('.add-card-container');
+const allLists = document.querySelectorAll('.card-list');
 
-      for (let j = 0; j < arrCards.length; j += 1) {
-        arrCards[j].addEventListener('mouseleave', () => {
-          const cardDel = document.querySelector('.card_del');
-          cardDel.remove();
-        });
-      }
-    };
-  };
+const allCardsArr = [];
+
+export default function makeNewCard(title, list) {
+  const newCard = new Card(title);
+  allCardsArr.push(newCard);
+  allCardsArr.forEach((item, index) => {
+    // eslint-disable-next-line no-param-reassign
+    item.id = index;
+  });
+  newCard.createNewCard(newCard, list);
 }
 
-// for (let i = 0; i < arrCards.length; i += 1) {
-//     arrCards[i].addEventListener('mouseenter', () => {
-//     // arrCards[i].addEventListener ('mouseover', () => {
-//         arrCards[i].insertAdjacentHTML('afterBegin', '<div class="card_del">&#10008</div>');
-//         const cardDel = document.querySelector('.card_del');
-//         console.log('OVER!!!');
-//         // cardDel.classList.add('active');
-//         // cardDel.classList.remove('hidden');
-//         cardDel.onclick = function() {
-//             arrCards[i].remove();
-//         }
-//     });
-// };
+[...addCard].forEach((item) => {
+  item.addEventListener('click', () => {
+    const parent = item.closest('.container');
+    const list = parent.querySelector('.card-list');
 
-// for (let j = 0; j < arrCards.length; j += 1) {
-//     arrCards[j].addEventListener('mouseleave', () => {
-//     // arrCards[j].addEventListener ('mouseout', () => {
-//         console.log('OUT!!!');
-//         const cardDel = document.querySelector('.card_del');
-//         // cardDel.classList.add('hidden');
-//         // cardDel.classList.remove('active');
-//         // cardDel.style.display = 'none';
-//         cardDel.remove();
-//     });
-// };
+    item.classList.remove('card');
+    item.classList.add('hidden');
+    const form = addNewForm.createForm();
+    parent.appendChild(form);
+    addNewForm.closeForm(form, item, parent);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      makeNewCard(addNewForm.addCardTitle(form), list);
+
+      addNewForm.afterSubmit(form, item, parent);
+
+      const allCards = document.querySelectorAll('.card');
+
+      dragAndDrop(allCards, allLists);
+    });
+  });
+});

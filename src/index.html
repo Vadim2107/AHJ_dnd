@@ -2,44 +2,38 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>AHJ Homework</title>
+        <title>AHJ Homework-Trello</title>
     </head>    
     <body>
         <div class="main-container">
             <div class="container container_todo droppable">
                 <h2>Todo</h2>
-                <div class="card">
-                    <!-- <div class="card_del">&#10008</div>
-                    <div class="card_title">ЯЯЯ</div> -->
+                <ul class="card-list todo-list">
+                    <li class="card unmovable">No tasks</li>
+                    <!-- <li class="card">Hello!!!</li> -->
+                </ul>
+                <div class="add-card-container">
+                    <p class="new_card">+ Add another card</p>
                 </div>
-                <a href="#" class="new_card">+ Add another card</a>
             </div>
             <div class="container container_inprodress droppable">
                 <h2>In progress</h2>
-                <a href="#" class="new_card">+ Add another card</a>
+                <ul class="card-list inprogress-list">
+                    <li class="card unmovable">No tasks</li>
+                </ul>
+                <div class="add-card-container">
+                    <p class="new_card">+ Add another card</p>
+                </div>
             </div>
             <div class="container container_done droppable">
                 <h2>Done</h2>
-                <div class="card">
-                    <div class="card_del">&#10008</div>
-                    <div class="card_title">ЯЯЯ</div>
+                <ul class="card-list done-list">
+                    <li class="card unmovable">No tasks</li>
+                </ul>
+                <div class="add-card-container">
+                    <p class="new_card">+ Add another card</p>
                 </div>
-                <a href="#" class="new_card">+ Add another card</a>
             </div>
         </div>
-        <div class="file-container">
-            <input class="overlapped" type="file">
-            <span class="overlap">Choose file</span>
-        </div>
-        <img data-id="preview">
-        <textarea data-id="text-preview" class="text-preview"></textarea>
-        <div data-id="drop-area" class="drop-area"></div>
-    
-        <ul class="items">
-            <li class="items-item">First Item</li>
-            <li class="items-item">Second Item</li>
-            <li class="items-item">Third Item</li> 
-            <li class="items-item">Fourth Item</li> 
-        </ul>
     </body>
 </html>

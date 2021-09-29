@@ -5,6 +5,7 @@ body {
     font-size: 14px;
     font-weight: 400;
     font-family: Arial, sans-serif;
+    background-color: rgb(79, 100, 218);
 
 }
 
@@ -13,7 +14,6 @@ body {
     flex-direction: row;
     margin: 10px;
     padding: 5px;
-    background-color: rgb(79, 100, 218);
 }
 
 .container {
@@ -25,45 +25,44 @@ body {
     height: fit-content;
 }
 
+.card-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
 .card {
     position: relative;
+    cursor: grab;
     display: flex;
     flex-direction: column;
-    width: 250px;
     min-height:50px;
     height: fit-content;
     background-color: #fff;
     margin: 5px 0 5px 0;
-    padding: 3px;
+    padding: 3px 20px 3px 3px;
     border: solid 1px black;
     border-radius: 5px;
 }
 
-.card_title {
-    padding: 20px 0 10px 10px;
+.card:active {
+    cursor: grabbing;
 }
 
-/* .hidden {
-    display: none;
-}
-
-.active {
-    display: block;
-} */
-
-.card_del {
+.card-close-block {
     position: absolute;
-    right: 10px;
     text-align: center;
+    top: 5px;
+    right: 5px;
     padding: 2px;
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
+    z-index: 1000;
 }
 
-.card_del:hover {
+.card-close-block:hover {
     cursor: pointer;
     color: crimson;
-    background-color: rgb(213, 214, 223);
 }
 
 /* .dragged {
@@ -75,9 +74,13 @@ body {
 
 .new_card {
     margin: 10px;
-    /* text-decoration: none; */
     color: #797373;
     font-size: 16px;
+}
+
+.new_card:hover {
+    cursor: pointer;
+    color: rgb(79, 100, 218);
 }
 
 h2 {
@@ -92,85 +95,76 @@ h2 {
     border-radius: 5px;
 }
 
-.btn {
+p {
+    color: #797373;
+    margin: 0;
+}
+
+.card-title-field {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px;
+    border: none;
+    border-radius:5px;
+    resize: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-block {
+    display: flex;
+    align-items: center;
+}
+
+.input-add-card {
     color: #fff;
     background-color: #5EB462;
     border: 1px solid #1c691c;
     border-radius: 4px;
     box-sizing: border-box;
     padding: 7px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.input-add-card:hover {
+    background-color: #1c691c;
     cursor: pointer;
 }
 
-.btn:hover {
-    color: #fff;
-    background-color: #1c691c;    
+.menu-block {
+    margin-right: 10px;
 }
 
-p {
-    color: black;
+.hidden {
+    display: none;
 }
 
-.file-container {
-    width: 200px;
-    height: 40px;
-    position: relative;
+.selected {
+    opacity: 0.7;
 }
 
-.overlapped {
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0; margin: 0;
-    opacity: 0.1;
-    width: 100%;
+/*селекторы для скрывающегося пункта списка задач (работает только в таком порядке)*/
+
+.unmovable {
+    display: none;
+    color: crimson;
+    font-size: 20px;
 }
 
-.overlap {
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0; margin: 0;
-    width: 100%;
-    background: #eee;
-    border-radius: 5px;
-    line-height: 40px;
-    text-align: center;
+.unmovable:last-child {
+    display: block;
 }
 
-.text-preview {
-    height: 200px;
-    width: 100%;
-    border: 1px dashed black;
-    border-radius: 5px;
-}
-
-.drop-area {
-    height: 200px;
-    width: 100%;
-    border: 1px dashed red;
-    border-radius: 5px;
-}
-
-.items {
-    list-style-type: none;
-    padding-left: 0;
-}
-.items-item {
-    border: 1px solid #999;
-    padding: 10px;
-    margin-bottom: -1px;;
-    cursor: pointer;
-    list-style-type: none;
-}
-.items-item:first-child {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.items-item:last-child {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-.items-item.dragged {
-    border-radius: 10px;
-    position: absolute;
-    z-index: 999;
-    pointer-events: none;
-    background: #fff;
+.list-item ~ .unmovable {
+    display: none;
 }
