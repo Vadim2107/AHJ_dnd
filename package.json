@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "ahj_dnd",
   "main": "index.js",
-  "repository": "https://github.com/Vadim2107/AHJ_dnd",
+  "repository": "git+https://github.com/Vadim2107/AHJ_dnd.git",
   "author": "ZiVaAn",
   "license": "ISC",
+  "homepage": "https://github.com/Vadim2107/AHJ_dnd#readme",
   "scripts": {
     "build": "webpack --mode production",
     "lint": "eslint .",
