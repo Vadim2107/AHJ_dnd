@@ -1,0 +1,173 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Arial, sans-serif;
+    background-color: rgb(79, 100, 218);
+
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 5px;
+}
+
+.container {
+    background-color: rgb(213, 214, 223);
+    margin: 5px;
+    padding: 5px;
+    width: 33%;
+    border-radius: 5px;
+    height: fit-content;
+}
+
+.card-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.card {
+    position: relative;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    min-height:50px;
+    height: fit-content;
+    background-color: #fff;
+    margin: 5px 0 5px 0;
+    padding: 3px 20px 3px 3px;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+.card:active {
+    cursor: grabbing;
+}
+
+.card-close-block {
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    right: 5px;
+    padding: 2px;
+    width: 22px;
+    height: 22px;
+    z-index: 1000;
+}
+
+.card-close-block:hover {
+    cursor: pointer;
+    color: crimson;
+}
+
+/* .dragged {
+    cursor: grabbing;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1000;
+} */
+
+.new_card {
+    margin: 10px;
+    color: #797373;
+    font-size: 16px;
+}
+
+.new_card:hover {
+    cursor: pointer;
+    color: rgb(79, 100, 218);
+}
+
+h2 {
+    margin: 10px;
+    text-transform: uppercase;
+}
+
+.card_input {
+    width: 100%;
+    height: 100px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+}
+
+p {
+    color: #797373;
+    margin: 0;
+}
+
+.card-title-field {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px;
+    border: none;
+    border-radius:5px;
+    resize: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-block {
+    display: flex;
+    align-items: center;
+}
+
+.input-add-card {
+    color: #fff;
+    background-color: #5EB462;
+    border: 1px solid #1c691c;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 7px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.input-add-card:hover {
+    background-color: #1c691c;
+    cursor: pointer;
+}
+
+.menu-block {
+    margin-right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.selected {
+    opacity: 0.7;
+}
+
+/*селекторы для скрывающегося пункта списка задач (работает только в таком порядке)*/
+
+.unmovable {
+    display: none;
+    color: crimson;
+    font-size: 20px;
+}
+
+.unmovable:last-child {
+    display: block;
+}
+
+.list-item ~ .unmovable {
+    display: none;
+}
+
+
+/*# sourceMappingURL=main.css.map*/
